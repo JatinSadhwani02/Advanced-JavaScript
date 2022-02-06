@@ -14,11 +14,11 @@
         let qR = document.getElementById("yourrow").value;
         let qC = document.getElementById("yourcolumn").value;
         let oR = document.getElementById("opponentrow").value;
-        let oC = document.getElementById("opponentrow").value;
+        let oC = document.getElementById("opponentcolumn").value;
         
       
     
-      class Employee
+      class Queens
       {
     
         constructor()
@@ -45,13 +45,11 @@
       }
     
     
-    var emp=new Employee(qR, qC, oR, oC);         
-    if (emp.canAttack(qR, qC, oR, oC))
+    var q=new Queens(qR, qC, oR, oC);         
+    if (q.canAttack())
           document.write("<h2>Yes-> Queens can attact eachother</h2>");
-          // document.getElementById("res").innerText = "Yes-> Queens can attact eachother"
     else
           document.write(" <h2>No -> Queens can't attack eachother </h2>");
-          // document.getElementById("res").innerText = "No -> Queens can't attack eachother"
     }          
     </script>
     
@@ -82,11 +80,6 @@
 
   
 </div>
-
-
-
-
-
 
 </body>
 </html>
