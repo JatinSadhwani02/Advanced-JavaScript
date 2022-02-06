@@ -9,43 +9,7 @@
    <title>JQuery Assignment</title>
 
    <style type="text/css">
-       /* td{
-           padding: 30px;
-           margin: 40px;
-       }
-       th{
-           color: blue;
-           font-weight: bold;
-           font-size: 20px;
-           font-style: italic;
-       }
-   
-       td{
-           color: black;
-           font-weight: bold;
-           font-size: 17px;
-           font-style: italic;
-       } */
-   
-       /* body{
-           background-color: wheat;
-           border: 2px solid black;
-           margin: 30px;
-       }
-    */
-   /* @keyframes example {
-     0%   {background-color: red;}
-     25%  {background-color: yellow;}
-     50%  {background-color: aqua;}
-     100% {background-color: pink;}
-   }
-   
-   tr , th{
-     animation-name: example;
-     animation-duration: 2s;
-     animation-iteration-count: 2000;
-   } */
-   
+
 
 </style>
 <body>
@@ -78,11 +42,13 @@
                    let total_defender_size = 0
                    let minDef = result[0].defender_size
                    let maxDef = result[0].defender_size
-                   let attacker_king = result[0].attacker_king
-                   let defender_king = result[0].defender_king
-                   let region = result[0].region 
-                   let name = result[0].name
+            
                    var set1 = new Set();
+                   var set2 = new Set();
+                   var set3 = new Set();
+                   var attacker_king = new Set();
+                   var defender_king = new Set();
+
 
                    for(var i=0 ;i<result.length; i++){
                     if (result[i].attacker_outcome == 'win'){
@@ -92,8 +58,12 @@
                         loss+=1
                     }
 
-                    total_defender_size+= result[i].defender_size
+                    total_defender_size += result[i].defender_size
                     set1.add(result[i].battle_type+" ")
+                    set2.add(result[i].name+" ")
+                    set3.add(result[i].region+" ")
+                    attacker_king.add(result[i].attacker_king+" ")
+                    defender_king.add(result[i].defender_king+" ") 
 
                     if(result[i].defender_size > maxDef && result[i].defender_size != null)
                         maxDef = result[i].defender_size
@@ -105,8 +75,9 @@
                         }
                    }
 
-document.write("<div class='container'> <center> <h1> Most Active </h1> <center> <table class='table table-bordered' cellpadding='20px;' border='5px'></thead><tr style='background-color:aqua;'> <th>attacker_king</th> <th scope='col'> defender_king </th>  <th scope='col'> name </th>  <th scope='col'>region</th>  </tr></thead>");  
-document.write("</tr><td>"+ attacker_king +"</td><td> "+ defender_king +"</td><td>  "+ region + "</td><td> "+ name  +"</td></tr><br> </table></div>")
+document.write("<div class='container'> <center> <h1> Most Active </h1> <center> <table class='table table-bordered' cellpadding='20px;' border='5px'><thead><tr style='background-color:aqua;'> <th>attacker_king</th> <th scope='col'> defender_king </th>  <th scope='col'> name </th>  <th scope='col'>region</th>  </tr></thead>");  
+
+document.write("</tr><td>"+ Array.from(attacker_king) +"</td><td> "+ Array.from(defender_king) +"</td><td>  "+ Array.from(set2) + "</td><td> "+ Array.from(set3) +"</td></tr><br> </table></div>")
 
 document.write("<div class='container'> <center> <h1> Attacker Outcome </h1> <center> <table class='table table-bordered' cellpadding='20px;' border='5px'></thead><tr style='background-color:aqua;'> <th>Win</th> <th scope='col'> Loss </th>  </tr></thead>");  
 document.write("</tr><td>"+ win+"</td><td>"+ loss+"</td> </table></div>")
